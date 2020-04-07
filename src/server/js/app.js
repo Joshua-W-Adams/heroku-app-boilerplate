@@ -13,7 +13,8 @@ const path = require('path');
 
 /* ================================ Variables =============================== */
 
-// N/A
+// environment port required so heroku can assign express a port to run on
+const PORT = process.env.PORT || 80;
 
 /* ============================= Private Methods ============================ */
 
@@ -64,8 +65,8 @@ function init() {
   // Initialise / construct instance of express server
   const app = express();
   // Create http server to re-direct all HTTP traffic to HTTPS encrypted server
-  const httpServer = http.createServer(app).listen(80, function() {
-      console.log(Date() + ': Web server started at localhost:' + 80);
+  const httpServer = http.createServer(app).listen(PORT, function() {
+      console.log(Date() + ': Web server started at localhost:' + PORT);
   })
   // Configure express.js to serve static files (that dont change).
   // i.e. all files in directories specified below.
@@ -73,7 +74,7 @@ function init() {
   // Root server path route
   app.get('/', function (req, res) {
     var filename = '/index.html',
-        filepath = __dirname + './../../../public';
+        filepath = __dirname + '/../../../public';
     // Return the requested file to the client
     _getFile(filename, filepath, res);
   })
