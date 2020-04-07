@@ -34,7 +34,7 @@ const settings = {
 			// property descriptions define the name that will be exported to compiled
 			// js code
 			"some-module-1": "someModule1",
-		 "./dist/some-module-2.js": "someModule2"
+		 "./public/some-module-2.js": "someModule2"
 	  }
 		// list of dependancies to ADD to the compiled css files
 		, css: []   // 'dep1_location/dep1.css', 'etc.'
@@ -44,7 +44,7 @@ const settings = {
 
 const paths = {
 	inputs: {
-		index: "./index.js"
+		index: "./src/browser/js/module.js"
 		, js: ["./src/**/*.js"]
 		, sass: ["./src/**/*.scss"]
 	}
@@ -62,7 +62,7 @@ function getWebpackCnf (name) {
 	  output: {
 	    filename: "[name].js",
 			libraryTarget: 'var',
-      library: pkg.name.replace('-', ''),
+      library: pkg.name.split('-').join(""),
 	  },
 		externals: {},
 	  optimization: {
@@ -151,7 +151,6 @@ function sassLint (arr, done) {
 
 /* =================================== Tasks ================================ */
 
-
 gulp.task('js-no-dep', function (done) {
   var entry = paths.inputs.index,
 			cnf = getWebpackCnf(pkg.name);
@@ -172,7 +171,7 @@ gulp.task('js-with-dep', function (done) {
 			cnf = getWebpackCnf(pkg.name + ".full");
 	cnf.externals = {
 		"some-module-1": "someModule1",
-		"./dist/some-module-2.js": "someModule2"
+		"./public/some-module-2.js": "someModule2"
 	};
   return compileJs(entry, cnf, done);
 })
@@ -182,7 +181,7 @@ gulp.task('js-min-with-dep', function (done) {
 			cnf = getWebpackCnf(pkg.name + ".full.min");
 	cnf.externals = {
 		"some-module-1": "someModule1",
-		"./dist/some-module-2.js": "someModule2"
+		"./public/some-module-2.js": "someModule2"
 	};
 	cnf.optimization = { minimize: true };
   return compileJs(entry, cnf, done);
@@ -197,7 +196,7 @@ gulp.task('css-no-dep', function (done) {
 gulp.task('css-with-dep', function (done) {
   var name = pkg.name + '.full.css'
       , arr = [
-        './dist/' + pkg.name + '.css'
+        './public/' + pkg.name + '.css'
       ];
   return appendCssDependacies(settings.dependancies.css.concat(arr), name);
 });

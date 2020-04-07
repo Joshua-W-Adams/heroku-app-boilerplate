@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Joshua-W-Adams/heroku-app-boilerplate#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
