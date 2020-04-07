@@ -1,0 +1,7 @@
+# Ignore these files
+
+node_modules/
+
+# But not these files
+
+#!some_folder/*.txt
