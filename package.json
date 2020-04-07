@@ -1,25 +1,43 @@
 {
-  "name": "commonjs-boilerplate",
+  "name": "heroku-web-app-boilerplate",
   "version": "1.0.0",
-  "description": "A template for creating nodejs / commonjs modules",
+  "description": "A basic express.js web server boilerplate",
+  "engines": {
+    "node": "10.x"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Joshua-W-Adams/commonjs-boilerplate.git"
+    "url": "git+https://github.com/Joshua-W-Adams/heroku-app-boilerplate.git"
   },
   "author": "Joshua Adams",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Joshua-W-Adams/commonjs-boilerplate/issues"
+    "url": "https://github.com/Joshua-W-Adams/heroku-app-boilerplate/issues"
   },
-  "homepage": "https://github.com/Joshua-W-Adams/commonjs-boilerplate#readme",
+  "homepage": "https://github.com/Joshua-W-Adams/heroku-app-boilerplate#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+  },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "gulp": "^4.0.2",
-    "gulp-eslint": "^6.0.0"
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-stylelint": "^13.0.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "webpack-stream": "^5.2.1"
   }
 }

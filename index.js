@@ -1,8 +1,9 @@
 /*!
- * CommonJS Boilerplate Entry File
+ * npm Entry File
  * (c) 2020 Joshua Adams
  */
 
 'use strict';
 
-module.exports = require('./src/js/module.js');
+const express = require('./src/server/js/app.js');
+express.init();
